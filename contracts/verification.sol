@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract VerificationSystem {
+contract Verification {
 
 
     mapping(bytes32 => bool) public verifiedHashes;

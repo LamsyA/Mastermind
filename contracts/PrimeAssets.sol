@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./Counters.sol";
-import {VerificationSystem} from "./verification.sol";
+import {Verification} from "./Verification.sol";
 
 
 contract PrimeAssets is ERC721, ReentrancyGuard {
@@ -102,14 +102,13 @@ contract PrimeAssets is ERC721, ReentrancyGuard {
 
 
     constructor(
-        string memory _name,
-        string memory _symbol,
-        address _verificationSystem
+        address _Verification
     )
-        ERC721(_name, _symbol)
+        ERC721( "PrimeAssets",
+        "PA")
     {
         owner = msg.sender;
-        verify = _verificationSystem;
+        verify = _Verification;
     }
 
 
@@ -121,7 +120,7 @@ contract PrimeAssets is ERC721, ReentrancyGuard {
         uint256 price
     ) public returns (bool) {
         // set all condition
-        require(VerificationSystem(verify).isAddressVerified(), "Address not verified");
+        require(Verification(verify).isAddressVerified(), "Address not verified");
         require(bytes(title).length > 0 && bytes(description).length > 0, "Title must be greater than 0");
         
         require(bytes(credential).length > 0 && price > 0 ether, "Image cannot be empty");
@@ -154,7 +153,7 @@ contract PrimeAssets is ERC721, ReentrancyGuard {
     */
 
     function buyAsset(uint256 id) public payable nonReentrant {
-        require(VerificationSystem(verify).isAddressVerified(), "Address not verified");
+        require(Verification(verify).isAddressVerified(), "Address not verified");
 
         require(
             assetArray[id].status == assetStatus.OPEN,

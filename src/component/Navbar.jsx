@@ -8,7 +8,7 @@ const Navbar = () => {
   const [connectedAccount] = useGlobalState('connectedAccount');
   return (
     <header
-      className="flex justify-between items-center p-6 shadow-md
+      className="flex justify-between items-center p-6 shadow-md z-10
          text-yellow-500 hover:text-yellow-400 fixed top-0 left-0 right-0
          cursor-pointer bg-white shadow-blue-200  "
     >

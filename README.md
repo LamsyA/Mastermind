@@ -57,3 +57,16 @@ meaning of the following indicator:
 - PAID - A buyer is has paid but yet to confirm the asset
 - PROBE - Asset is been held (no one can buy the asset, asset has been seized)
 - SOLD - Asset has been confirmed by the buyer and ownership has been transfered to the buyer.
+
+## Contract Details
+
+contracts/Verification.sol:Verification at `0x70762E20f67F5eFC276dFe9Da337B0e36216C066`
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract Verification on [Etherscan](https://sepolia.lineascan.build/address/address/0x70762E20f67F5eFC276dFe9Da337B0e36216C066#code).
+
+Successfully submitted source code for contract
+contracts/PrimeAssets.sol:PrimeAssets at `0x0F6D2a36a6b706e1d50b75FbCc52Bb5E7655aC8C`
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract PrimeAssets on [Etherscan](https://sepolia.lineascan.build/address/address/0x0F6D2a36a6b706e1d50b75FbCc52Bb5E7655aC8C#code).
