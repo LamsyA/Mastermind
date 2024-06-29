@@ -32,7 +32,6 @@
     "react-toastify": "^9.1.1",
     "solc": "^0.8.19",
     "typewriter-effect": "^2.19.0",
-    "viem": "^2.16.4",
     "wagmi": "^2.10.8",
     "web-vitals": "^3.1.0",
     "web3": "^1.8.1"
