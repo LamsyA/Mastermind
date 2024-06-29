@@ -2,3 +2,5 @@ node_modules
 
 typechain*
 .env*
+
+package-lock.json
