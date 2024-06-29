@@ -206,7 +206,6 @@ function char(bytes1 b) internal pure returns (bytes1 c) {
     if (uint8(b) < 10) return bytes1(uint8(b) + 0x30);
     else return bytes1(uint8(b) + 0x57);
 }
-
 function generateSVGImage(string memory gameResult, uint256 tokenId) internal pure returns (string memory) {
     string memory svg = string(
         abi.encodePacked(
@@ -219,8 +218,15 @@ function generateSVGImage(string memory gameResult, uint256 tokenId) internal pu
             '<circle cx="60" cy="60" r="30" fill="#ff9b00"/>',
             '<circle cx="240" cy="60" r="30" fill="#ff5cf2"/>',
             '<circle cx="240" cy="240" r="30" fill="#ff9b00"/>',  
-            '<circle cx="60" cy="240" r="30" fill="#ffcf00"/>',  
-            '<text x="150" y="165" font-family="Arial" font-size="72" fill="#c568ff" text-anchor="middle" dominant-baseline="middle">m</text>',
+            '<circle cx="60" cy="240" r="30" fill="#ffcf00"/>',
+            // Start of frog drawing
+            '<ellipse cx="150" cy="150" rx="30" ry="20" fill="green"/>', // Body
+            '<circle cx="140" cy="140" r="5" fill="white"/>', // Left eye
+            '<circle cx="160" cy="140" r="5" fill="white"/>', // Right eye
+            '<circle cx="140" cy="140" r="2" fill="black"/>', // Left pupil
+            '<circle cx="160" cy="140" r="2" fill="black"/>', // Right pupil
+            '<path d="M 140 160 Q 150 170 160 160" stroke="black" stroke-width="2" fill="none"/>', // Smile
+            // End of frog drawing
             '<text x="90" y="280" font-family="Roboto" font-size="16" fill="white">',
             'Game Result: ',
             gameResult,
@@ -242,6 +248,8 @@ function generateSVGImage(string memory gameResult, uint256 tokenId) internal pu
 
     return svgBase64Encoded;
 }
+
+
 
 
 
