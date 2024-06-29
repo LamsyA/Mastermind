@@ -1,47 +1,49 @@
-import Hero from "./component/Hero"
-import { Route, Routes } from "react-router-dom"
-import Navbar from "./component/Navbar"
-import Home from "./views/Home"
-import Asset from "./views/Asset"
-import Alert from "./store/Alert"
-import Loader from "./store/Loader"
-import { useEffect, useState } from "react"
-import { getContract, getOwner, isWalletConnected, listAssets, listBuyers} from "./services/Blockchain"
+import React from "react";
+import Game from "./components/Game";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import { Route, Routes } from "react-router-dom";
+import GamePlay from "./components/GamePlay";
+import { useEffect, useState } from "react";
+import {
+  getCodemaker,
+  checkActiveGame,
+  getContract,
+  isWalletConnected,
+  _getLatestFeedback,
+  getCodebreaker,
+  getcodebreakerscore,
+  getcodemakerscore,
+} from "./store/wallet";
 
+const App = () => {
+  const [loaded, setLoaded] = useState(false);
 
-function App() {
-
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect (  () => {
+  useEffect(() => {
     const loadData = async () => {
-      console.log('Blockchain loaded')
+      console.log("Blockchain loaded");
       setLoaded(true);
-      const result = await isWalletConnected()
-      await getContract()
-      await listAssets();
-      await getOwner()
-
-  
-  };
-   loadData();
-    
- 
-  },[])
-
+      const result = await isWalletConnected();
+      await getContract();
+      await checkActiveGame();
+      await getCodemaker();
+      await getcodemakerscore();
+      await getcodebreakerscore();
+      await getCodebreaker();
+      await _getLatestFeedback();
+    };
+    loadData();
+  }, []);
   return (
-    <div className='min-h-screen relative'>
-
+    <div className="bg-[#0F1116]">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/assets/:id" element={<Asset />} />
-
+        <Route path="/" exact element={<Hero />} />
+        <Route path="/Game" exact element={<Game />} />
+        <Route path="/GamePlay" exact element={<GamePlay />} />
       </Routes>
-      <Alert/>
-      <Loader/>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

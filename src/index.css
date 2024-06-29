@@ -12,62 +12,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.bg-gradient {
-  background-color: #ffe999;
-  background-image: radial-gradient(
-      at 16% 94%,
-      hsla(128, 76%, 77%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 64% 66%, hsla(100, 68%, 64%, 1) 0px, transparent 50%),
-    radial-gradient(at 69% 50%, hsla(20, 95%, 76%, 1) 0px, transparent 50%),
-    radial-gradient(at 16% 0%, hsla(276, 77%, 78%, 1) 0px, transparent 50%),
-    radial-gradient(at 16% 65%, hsla(205, 61%, 78%, 1) 0px, transparent 50%),
-    radial-gradient(at 46% 8%, hsla(68, 62%, 68%, 1) 0px, transparent 50%),
-    radial-gradient(at 51% 14%, hsla(90, 86%, 68%, 1) 0px, transparent 50%);
-}
-
-.text-gradient {
-  background-color: #fff;
-  background-image: -webkit-linear-gradient(#eee, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 .gradient-bg-hero {
-  background-color: #151c25;
-  background-image: radial-gradient(
-      at 0% 0%,
-      hsl(302deg 25% 18%) 0,
-      transparent 50%
-    ),
-    radial-gradient(at 50% 0%, hsl(0deg 39% 30%) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+  background: #d3ee70;
+  background: -webkit-linear-gradient(top left, #d3ee70, #4d51d5);
+  background: -moz-linear-gradient(top left, #d3ee70, #4d51d5);
+  background: linear-gradient(to bottom right, #d3ee70, #5d51d5);
 }
 
 .gradient-bg-artworks {
-  background-color: #0f0e13;
+  background-color: #151c25;
   background-image: radial-gradient(
       at 50% 50%,
       hsl(302deg 25% 18%) 0,
       transparent 50%
     ),
-    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 50%, hsla(339, 39%, 25%, 1) 0, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(74, 8%, 25%, 0.96) 0, transparent 70%),
+    radial-gradient(at 50% 50%, hsla(236, 47%, 26%, 0.96) 0, transparent 50%);
 }
 
 .gradient-bg-footer {
-  background-color: #151c25;
+  background-color: #5d51d5;
   background-image: radial-gradient(
       at 0% 100%,
-      hsl(0deg 39% 30%) 0,
+      hsl(0deg 26% 20%) 0,
       transparent 53%
     ),
-    radial-gradient(at 50% 150%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+    radial-gradient(at 50% 150%, hsla(239, 49%, 30%, 1) 0, transparent 50%);
 }
 
 .text-gradient {
-  background: -webkit-linear-gradient(#eee, #333);
+  background: -webkit-linear-gradient(#bee901, #e39013);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -94,6 +69,103 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.groove-outline {
+  border: 4px solid rgb(65, 63, 63);
+  border-top: none;
+  background-color: #00ff00;
+  border-radius: 0 0 1rem 1rem;
+  padding: 0.5rem 2rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes color-change {
+  0%,
+  100% {
+    background-color: #e11d48;
+  }
+  16% {
+    background-color: #3b82f6;
+  }
+  32% {
+    background-color: #10b981;
+  }
+  48% {
+    background-color: #f59e0b;
+  }
+  64% {
+    background-color: #a855f7;
+  }
+  80% {
+    background-color: #ef4444;
+  }
+}
+
+.loader {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.loader div {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #fff;
+  animation: spin 1.2s linear infinite, color-change 1.2s linear infinite;
+}
+
+.loader div:nth-child(1) {
+  top: 5%;
+  left: 50%;
+  animation-delay: 0s;
+}
+.loader div:nth-child(2) {
+  top: 25%;
+  left: 75%;
+  animation-delay: 0.2s;
+}
+.loader div:nth-child(3) {
+  top: 50%;
+  left: 95%;
+  animation-delay: 0.4s;
+}
+.loader div:nth-child(4) {
+  top: 75%;
+  left: 75%;
+  animation-delay: 0.6s;
+}
+.loader div:nth-child(5) {
+  top: 95%;
+  left: 50%;
+  animation-delay: 0.8s;
+}
+.loader div:nth-child(6) {
+  top: 75%;
+  left: 25%;
+  animation-delay: 1s;
+}
+.loader div:nth-child(7) {
+  top: 50%;
+  left: 5%;
+  animation-delay: 1.2s;
+}
+.loader div:nth-child(8) {
+  top: 25%;
+  left: 25%;
+  animation-delay: 1.4s;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

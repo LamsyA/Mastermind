@@ -13,6 +13,18 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
+      name: "IERC1155Errors",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC1155Errors__factory>;
+    getContractFactory(
+      name: "IERC20Errors",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20Errors__factory>;
+    getContractFactory(
+      name: "IERC721Errors",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Errors__factory>;
+    getContractFactory(
       name: "ERC721",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC721__factory>;
@@ -37,14 +49,33 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165__factory>;
     getContractFactory(
-      name: "PrimeAssets",
+      name: "Math",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.PrimeAssets__factory>;
+    ): Promise<Contracts.Math__factory>;
     getContractFactory(
-      name: "Verification",
+      name: "Strings",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Verification__factory>;
+    ): Promise<Contracts.Strings__factory>;
+    getContractFactory(
+      name: "Mastermind",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Mastermind__factory>;
 
+    getContractAt(
+      name: "IERC1155Errors",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC1155Errors>;
+    getContractAt(
+      name: "IERC20Errors",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20Errors>;
+    getContractAt(
+      name: "IERC721Errors",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Errors>;
     getContractAt(
       name: "ERC721",
       address: string,
@@ -76,15 +107,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC165>;
     getContractAt(
-      name: "PrimeAssets",
+      name: "Math",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.PrimeAssets>;
+    ): Promise<Contracts.Math>;
     getContractAt(
-      name: "Verification",
+      name: "Strings",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.Verification>;
+    ): Promise<Contracts.Strings>;
+    getContractAt(
+      name: "Mastermind",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Mastermind>;
 
     // default types
     getContractFactory(
