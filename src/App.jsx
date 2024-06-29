@@ -19,21 +19,21 @@ import {
 const App = () => {
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    const loadData = async () => {
-      console.log("Blockchain loaded");
-      setLoaded(true);
-      const result = await isWalletConnected();
-      await getContract();
-      await checkActiveGame();
-      await getCodemaker();
-      await getcodemakerscore();
-      await getcodebreakerscore();
-      await getCodebreaker();
-      await _getLatestFeedback();
-    };
-    loadData();
-  }, []);
+  // useEffect(() => {
+  //   const loadData = async () => {
+  //     console.log("Blockchain loaded");
+  //     setLoaded(true);
+  //     const result = await isWalletConnected();
+  //     await getContract();
+  //     await checkActiveGame();
+  //     await getCodemaker();
+  //     await getcodemakerscore();
+  //     await getcodebreakerscore();
+  //     await getCodebreaker();
+  //     await _getLatestFeedback();
+  //   };
+  //   loadData();
+  // }, []);
   return (
     <div className="bg-[#0F1116]">
       <Navbar />
