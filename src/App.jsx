@@ -15,7 +15,7 @@ import {
   getcodebreakerscore,
   getcodemakerscore,
 } from "./store/wallet";
-
+import { ToastContainer, toast } from "react-toastify";
 const App = () => {
   const [loaded, setLoaded] = useState(false);
 
@@ -42,6 +42,8 @@ const App = () => {
         <Route path="/Game" exact element={<Game />} />
         <Route path="/GamePlay" exact element={<GamePlay />} />
       </Routes>
+
+      <ToastContainer position="top-right" />
     </div>
   );
 };

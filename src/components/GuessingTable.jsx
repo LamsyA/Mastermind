@@ -10,6 +10,8 @@ import {
   getCodemaker,
 } from "../store/wallet";
 import { COLORS, NUM_ROWS, CODE_LENGTH } from "../store/lib";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const GuessingTable = ({
   secretCode,
@@ -37,7 +39,6 @@ const GuessingTable = ({
 
   const handlePegClick = (rowIndex, pegIndex) => {
     if (rowIndex !== currentRow || gameOver) return;
-
     setColorPicker({ rowIndex, pegIndex });
   };
 
@@ -78,27 +79,35 @@ const GuessingTable = ({
   };
 
   const handleCheck = async () => {
+    toast.info("Making guess, please wait...");
+
     const currentGuess = guesses[currentRow];
     const convertedGuess = currentGuess.map((color) => {
       return Object.keys(COLORS).find((key) => COLORS[key] === color);
     });
 
-    const result = await _makeGuess({
-      code1: convertedGuess[0],
-      code2: convertedGuess[1],
-      code3: convertedGuess[2],
-      code4: convertedGuess[3],
-    });
+    try {
+      const result = await _makeGuess({
+        code1: convertedGuess[0],
+        code2: convertedGuess[1],
+        code3: convertedGuess[2],
+        code4: convertedGuess[3],
+      });
 
-    if (result) {
-      fetchLatestFeedback();
-      await getcodebreakerscore();
-      await getcodemakerscore();
-      await getCodebreaker();
-      await getCodemaker();
-      await refreshBoard();
-    } else {
-      console.log("Failed to submit guess");
+      if (result) {
+        toast.success("Guess submitted successfully");
+        await fetchLatestFeedback();
+        await getcodebreakerscore();
+        await getcodemakerscore();
+        await getCodebreaker();
+        await getCodemaker();
+        await refreshBoard();
+      } else {
+        toast.error("Failed to submit guess");
+      }
+    } catch (error) {
+      console.error("Error making guess:", error);
+      toast.error("An error occurred while making the guess");
     }
   };
 
@@ -146,6 +155,7 @@ const GuessingTable = ({
       await getCodebreaker();
     } catch (error) {
       console.error("Error refreshing board:", error.message);
+      toast.error("An error occurred while refreshing the board");
     }
   };
 
@@ -219,7 +229,7 @@ const GuessingTable = ({
       {gameOver && (
         <div className="mt-4 text-center">
           {gameWon ? (
-            <div className="text-green-300 text-pretty font-bold  text-xl">
+            <div className="text-green-300 text-pretty font-bold text-xl">
               🎖️ You won! Congratulations! NFT Minted
             </div>
           ) : (

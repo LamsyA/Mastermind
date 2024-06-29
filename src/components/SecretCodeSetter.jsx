@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { _startGame } from "../store/wallet";
 import { useGlobalState } from "../store/Data";
 import { COLORS, CODE_LENGTH } from "../store/lib";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SecretCodeSetter = ({ setSecretCode, setIsSettingSecretCode }) => {
   const [activegame] = useGlobalState("activegame");
@@ -22,6 +24,7 @@ const SecretCodeSetter = ({ setSecretCode, setIsSettingSecretCode }) => {
 
   const handleSecretCodeSubmit = () => {
     if (secretCode.every((color) => color !== null)) {
+      toast.info("Setting secret code, please wait...");
       const convertedSecretCode = secretCode.map((color) => {
         return Object.keys(COLORS).find((key) => COLORS[key] === color);
       });
@@ -31,13 +34,18 @@ const SecretCodeSetter = ({ setSecretCode, setIsSettingSecretCode }) => {
         code2: convertedSecretCode[1],
         code3: convertedSecretCode[2],
         code4: convertedSecretCode[3],
-      });
-
-      setSecretCode(secretCode);
-
-      setIsSettingSecretCode(activegame);
+      })
+        .then(() => {
+          toast.success("Secret code set successfully");
+          setSecretCode(secretCode);
+          setIsSettingSecretCode(activegame);
+        })
+        .catch((error) => {
+          console.error("Failed to set secret code", error);
+          toast.error("Failed to set secret code");
+        });
     } else {
-      alert("Please select a color for all pegs in the secret code.");
+      toast.error("Please select a color for all pegs in the secret code.");
     }
   };
 

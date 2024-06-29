@@ -6,7 +6,7 @@ import InfoBox from "./InfoBox";
 import { checkActiveGame } from "../store/wallet";
 import { useGlobalState } from "../store/Data";
 import { TbLivePhoto, TbLivePhotoOff } from "react-icons/tb";
-import { HiOutlineStatusOffline, HiOutlineStatusOnline } from "react-icons/hi";
+
 const GamePlay = () => {
   const [maker] = useGlobalState("maker");
   const [breaker] = useGlobalState("breaker");
